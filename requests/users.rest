@@ -1,0 +1,13 @@
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "first_name":"yovel",
+    "last_name":"hadad",
+    "id":123,
+    "birthday":"21/8/1996"
+}
+###
+
+GET http://localhost:3003/api/users
+###
