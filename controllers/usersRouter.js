@@ -2,15 +2,14 @@ const usersRouter = require("express").Router();
 const User = require("../models/users");
 const moment = require("moment");
 
-usersRouter.get("/", async (req,res,next) => {
-    try{
-        const users = await User.find({});
-        return res.status(200).json(users);
-    }
-    catch{
-        next()
-    }
-})
+usersRouter.get("/", async (req, res, next) => {
+  try {
+    const users = await User.find({});
+    return res.status(200).json(users);
+  } catch {
+    next();
+  }
+});
 
 usersRouter.post("/", async (req, res) => {
   try {
@@ -19,12 +18,10 @@ usersRouter.post("/", async (req, res) => {
     // Validate and parse the birthday string using moment.js
     const parsedBirthday = moment(birthday, "DD/MM/YYYY");
     if (!parsedBirthday.isValid()) {
-      return res
-        .status(400)
-        .json({
-          error:
-            "Invalid birthday format. Please provide the date in DD/MM/YYYY format.",
-        });
+      return res.status(400).json({
+        error:
+          "Invalid birthday format. Please provide the date in DD/MM/YYYY format.",
+      });
     }
     const result = await User.findOne({ id });
     if (result) {

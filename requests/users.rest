@@ -11,3 +11,17 @@ Content-Type: application/json
 
 GET http://localhost:3003/api/users
 ###
+
+POST http://localhost:3003/addcost
+Content-Type: application/json
+
+{
+    "user_id":123123,
+    "year": 2023,
+    "month":5,
+    "day":12,
+    "description":"milk",
+    "category":"food",
+    "sum":8
+}
+###

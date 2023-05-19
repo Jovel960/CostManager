@@ -7,7 +7,6 @@ const addCost = require("./controllers/addCostRouter");
 const app = express();
 const config = require("./utilities/config");
 
-
 mongoose
   .connect(config.MONGODB_URI)
   .then((res) => console.log("Connected to DB"))
