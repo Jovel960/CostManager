@@ -4,11 +4,13 @@ const aboutRouter = require("./controllers/abous");
 const middleWares = require("./utilities/middleware");
 const addCost = require("./controllers/addCost");
 const app = express();
+const config = require("./utilities/config");
+
 
 mongoose
-  .connect("mongodb+srv://jovelh960:jovelh960@cluster0.rqk3rwu.mongodb.net/costs?retryWrites=true&w=majority")
-  .then((res) => console.log("connected"))
-  .catch((err) => console.log(err,"error"));
+  .connect(config.MONGODB_URI)
+  .then((res) => console.log("Connected to DB"))
+  .catch((err) => console.log(err, "error"));
 
 app.use(express.json());
 app.use("/addcost", addCost);

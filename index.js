@@ -1,3 +1,4 @@
 const app = require("./app");
+const config = require("./utilities/config")
 
-app.listen(3001, () => console.log("server is up"));
+app.listen(config.PORT , () => console.log(`Listening on port ${config.PORT}`));
