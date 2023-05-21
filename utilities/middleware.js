@@ -1,5 +1,21 @@
+const moment = require("moment");
+
 const unKnownEndPoint = (req, res) =>
   res.status(404).json({ error: "unknown end point" });
+
+// Validate and parse the birthday string using moment.js
+const assertBirthDay = (req, res, next) => {
+  const { birthday } = req.body;
+  const parsedBirthday = moment(birthday, "DD/MM/YYYY");
+  if (!parsedBirthday.isValid()) {
+    return res.status(400).json({
+      error:
+        "Invalid birthday format. Please provide the date in DD/MM/YYYY format.",
+    });
+  }
+  req.birthday = parsedBirthday;
+  next();
+};
 
 const assertProps = (req, res, next) => {
   if (
@@ -18,4 +34,4 @@ const assertProps = (req, res, next) => {
   } else next();
 };
 
-module.exports = { unKnownEndPoint, assertProps };
+module.exports = { unKnownEndPoint, assertProps, assertBirthDay };

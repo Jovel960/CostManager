@@ -1,6 +1,6 @@
 const usersRouter = require("express").Router();
 const User = require("../models/users");
-const moment = require("moment");
+const middleWares = require("../utilities/middleware");
 
 usersRouter.get("/", async (req, res, next) => {
   try {
@@ -11,18 +11,9 @@ usersRouter.get("/", async (req, res, next) => {
   }
 });
 
-usersRouter.post("/", async (req, res) => {
+usersRouter.post("/", middleWares.assertBirthDay, async (req, res) => {
+  const { id, first_name, last_name, birthday } = req.body;
   try {
-    const { id, first_name, last_name, birthday } = req.body;
-
-    // Validate and parse the birthday string using moment.js
-    const parsedBirthday = moment(birthday, "DD/MM/YYYY");
-    if (!parsedBirthday.isValid()) {
-      return res.status(400).json({
-        error:
-          "Invalid birthday format. Please provide the date in DD/MM/YYYY format.",
-      });
-    }
     const result = await User.findOne({ id });
     if (result) {
       return res.status(400).json({ error: "user id must be uniqe" });
@@ -32,7 +23,7 @@ usersRouter.post("/", async (req, res) => {
         id,
         first_name,
         last_name,
-        birthday: parsedBirthday.toDate(),
+        birthday: req.birthday.toDate(),
       });
       await user.save();
       return res.status(201).json(user);
