@@ -23,7 +23,7 @@ usersRouter.post("/", middleWares.assertBirthDay, async (req, res) => {
         id,
         first_name,
         last_name,
-        birthday: req.birthday.toDate(),
+        birthday: birthday.toDate(),
       });
       await user.save();
       return res.status(201).json(user);
