@@ -11,6 +11,15 @@ usersRouter.get("/", async (req, res, next) => {
   }
 });
 
+usersRouter.delete("/", async (req, res, next) => {
+  try {
+    await User.deleteMany();
+    return res.status(200).json({ updated: true });
+  } catch (e) {
+    return res.status(400).json({ updated: false });
+  }
+});
+
 usersRouter.post("/", middleWares.assertBirthDay, async (req, res) => {
   const { id, first_name, last_name, birthday } = req.body;
   try {

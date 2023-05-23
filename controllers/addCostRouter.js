@@ -26,7 +26,7 @@ addCost.get("/", async (req, res, next) => {
 
 addCost.delete("/", async (req, res, next) => {
   try {
-    const costs = await Cost.deleteMany();
+    await Cost.deleteMany();
     return res.status(200).json({ updated: true });
   } catch (e) {
     return res.status(400).json({ updated: false });
