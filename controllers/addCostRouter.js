@@ -5,7 +5,7 @@ const { assertProps } = require("../utilities/middleware");
 
 addCost.post("/", assertProps, async (req, res, next) => {
   try {
-    const user = await User.findOne({ user_id: req.body.user_id });
+    const user = await User.findOne({ id: req.body.user_id });
     if (!user) return res.status(400).json({ error: "user not exist" });
     const cost = new Cost(req.body);
     await cost.save();

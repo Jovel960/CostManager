@@ -6,17 +6,16 @@ const unKnownEndPoint = (req, res) =>
 // Validate and parse the birthday string using moment.js
 const assertBirthDay = (req, res, next) => {
   const { birthday } = req.body;
-  const parsedBirthday = moment(birthday, "DD/MM/YYYY");
+  const parsedBirthday = moment(birthday, "MMMM, Do, YYYY");
   if (!parsedBirthday.isValid()) {
     return res.status(400).json({
       error:
         "Invalid birthday format. Please provide the date in DD/MM/YYYY format.",
     });
   }
-  req.birthday = parsedBirthday;
+  req.body.birthday = parsedBirthday.format("YYYY-MM-DD");
   next();
 };
-
 const assertProps = (req, res, next) => {
   if (
     !req.body.year ||

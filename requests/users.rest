@@ -2,27 +2,28 @@ POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-    "first_name":"yovel",
-    "last_name":"hadad",
-    "id":1223,
-    "birthday":"21/8/1996"
+   "id": 123123,
+   "first_name": "moshe",
+   "last_name": "israeli",
+    "birthday": "January, 10th, 1990"
 }
 ###
 
 GET http://localhost:3003/api/users
 ###
-
+GET http://localhost:3003/report?year=2023&month=5&user_id=123123
+###
 DELETE  http://localhost:3003/api/users
 ###
 POST http://localhost:3003/addcost
 Content-Type: application/json
 
 {
-    "user_id":12311223,
+    "user_id":123123,
     "year": 2023,
     "month":5,
     "day":12,
-    "description":"milk",
+    "description":"branch",
     "category":"food",
     "sum":8
 }
