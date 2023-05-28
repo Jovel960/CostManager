@@ -1,3 +1,4 @@
+//Report object function constructor
 function report() {
   if (!new.target) return;
   this.food = [];
@@ -7,7 +8,7 @@ function report() {
   this.transportation = [];
   this.other = [];
 }
-
+//This method is used to filter properties from the Cost document
 const cleanUserCosts = (userCosts) => {
   const cleanedCosts = userCosts.map((cost) => {
     const { _id, __v, user_id, ...cleanedCost } = cost.toObject();
@@ -16,7 +17,7 @@ const cleanUserCosts = (userCosts) => {
   console.log(cleanedCosts);
   return cleanedCosts;
 };
-
+//This method create new report and fill each property according to userCosts
 const reportForUser = (userCosts) => {
   const userReport = new report();
 

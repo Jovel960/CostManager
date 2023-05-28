@@ -1,5 +1,5 @@
 const aboutRouter = require("express").Router();
-
+//Basic about route using get method returns an object with the developers info
 aboutRouter.get("/", (req, res, next) => {
   res.status(200).json([
     {

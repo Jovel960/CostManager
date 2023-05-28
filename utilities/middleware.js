@@ -1,5 +1,6 @@
 const moment = require("moment");
 
+//Unknow endpoint middleware
 const unKnownEndPoint = (req, res) =>
   res.status(404).json({ error: "unknown end point" });
 
@@ -16,6 +17,8 @@ const assertBirthDay = (req, res, next) => {
   req.body.birthday = parsedBirthday.format("YYYY-MM-DD");
   next();
 };
+
+//asserting missing props for cost middleware
 const assertProps = (req, res, next) => {
   if (
     !req.body.year ||
