@@ -22,7 +22,8 @@ const reportForUser = (userCosts) => {
   const userReport = new report();
 
   for (const cost of userCosts) {
-    userReport[cost.category].push(cost);
+    if (userReport[cost.category]) userReport[cost.category].push(cost);
+    else userReport["other"].push(cost);
   }
   return userReport;
 };
