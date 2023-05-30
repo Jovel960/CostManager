@@ -7,7 +7,7 @@ usersRouter.get("/", async (req, res, next) => {
     const users = await User.find({});
     return res.status(200).json(users);
   } catch {
-    next();
+    return res.status(500).json({ error: "Something went wrong..." });
   }
 });
 
@@ -16,7 +16,7 @@ usersRouter.delete("/", async (req, res, next) => {
     await User.deleteMany();
     return res.status(200).json({ updated: true });
   } catch (e) {
-    return res.status(400).json({ updated: false });
+    return res.status(500).json({ updated: false });
   }
 });
 
@@ -39,7 +39,7 @@ usersRouter.post("/", middleWares.assertBirthDay, async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    return res.status(400).json(e);
+    return res.status(500).json(e);
   }
 });
 

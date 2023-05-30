@@ -11,7 +11,7 @@ addCost.post("/", assertProps, async (req, res, next) => {
     await cost.save();
     return res.status(201).json(cost);
   } catch (e) {
-    next();
+    return res.status(500).json({ error: "Something went wrong..." });
   }
 });
 
@@ -20,7 +20,7 @@ addCost.get("/", async (req, res, next) => {
     const costs = await Cost.find({});
     return res.status(200).json(costs);
   } catch (e) {
-    next();
+    return res.status(500).json({ error: "Something went wrong..." });
   }
 });
 
@@ -29,7 +29,7 @@ addCost.delete("/", async (req, res, next) => {
     await Cost.deleteMany();
     return res.status(200).json({ updated: true });
   } catch (e) {
-    return res.status(400).json({ updated: false });
+    return res.status(500).json({ updated: false });
   }
 });
 

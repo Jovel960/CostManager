@@ -14,11 +14,10 @@ reportRouter.get("/", async (req, res, next) => {
       });
     const cleanedCosts = cleanUserCosts(userCosts);
     const userReport = reportForUser(cleanedCosts);
-    console.log(userReport);
     res.status(200).json(userReport);
   } catch (e) {
-    console.log(e);
-  }
+    return res.status(500).json({error:"Something went wrong..."})
+    }
 });
 
 module.exports = reportRouter;

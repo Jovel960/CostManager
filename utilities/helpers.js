@@ -14,7 +14,6 @@ const cleanUserCosts = (userCosts) => {
     const { _id, __v, user_id, ...cleanedCost } = cost.toObject();
     return cleanedCost;
   });
-  console.log(cleanedCosts);
   return cleanedCosts;
 };
 //This method create new report and fill each property according to userCosts
