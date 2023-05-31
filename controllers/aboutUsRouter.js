@@ -11,8 +11,8 @@ aboutRouter.get("/", (req, res, next) => {
     {
       firstname: "yarin",
       lastname: "rahamim",
-      id: 34534544,
-      email: "",
+      id: 205833668,
+      email: "Yarin1996@outlook.co.il",
     },
   ]);
 });
