@@ -25,7 +25,7 @@ Content-Type: application/json
     "day":12,
     "description":"branch",
     "category":"sedsaed",
-    "sum":8
+    "sum":12
 }
 ###
 DELETE   http://localhost:3003/addcost

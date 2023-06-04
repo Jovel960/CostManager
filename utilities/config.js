@@ -1,5 +1,5 @@
 require("dotenv").config();
-//Get the env mongo uri and pro variables
+//Get the env mongo uri and port variables
 const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = process.env.PORT;
 

@@ -13,18 +13,25 @@ reportRouter.get("/", async (req, res, next) => {
   try {
     const isUser = await User.findOne({ id: user_id });
     const userCosts = await Cost.find({ year, month });
+
+    // Check if the user exists
     if (!isUser)
       return res.status(400).json({
         error: "user is not exist",
       });
+
+    // Check if a report already exists for the specified year, month, and user to prevent another calculation (Approximation)
     const report = await Report.findOne({ year, month, user_id });
     if (report) {
-        console.log("here");
+      // If a report exists, clean the the user_id, day, month, year properties and return it as the response
       const cleanedReport = cleanUserReport(report);
       return res.status(200).json(cleanedReport);
     } else {
+      // If a report does not exist, clean the user costs id and more properties and generate a new report
       const cleanedCosts = cleanUserCosts(userCosts);
       const userReport = reportForUser(cleanedCosts);
+
+      // Create a new report document and save it to the database
       const newUserReport = new Report({
         year,
         month,
@@ -37,10 +44,12 @@ reportRouter.get("/", async (req, res, next) => {
         other: userReport.other,
       });
       await newUserReport.save();
+
+      // Return the generated user report as the response
       res.status(200).json(userReport);
     }
   } catch (e) {
-    return res.status(500).json({ error: "Something went wrong..." });
+    return res.status(400).json({ error: "Something went wrong..." });
   }
 });
 

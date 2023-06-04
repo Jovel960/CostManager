@@ -1,4 +1,4 @@
-/* Creating cost schema and remove the _id and __v props using set method. then exporting a mongoose model */
+//Creating cost schema and remove the _id and __v props using set method. then exporting a mongoose model 
 
 const mongoose = require("mongoose");
 

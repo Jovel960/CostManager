@@ -8,6 +8,7 @@ function report() {
   this.transportation = [];
   this.other = [];
 }
+
 //This method is used to filter properties from the Cost document
 const cleanUserCosts = (userCosts) => {
   const cleanedCosts = userCosts.map((cost) => {
@@ -16,6 +17,7 @@ const cleanUserCosts = (userCosts) => {
   });
   return cleanedCosts;
 };
+
 //This method is used to filter properties from the Report document
 const cleanUserReport = (userReport) => {
   const { _id, __v, user_id, ...cleanedReport } = userReport.toObject();
