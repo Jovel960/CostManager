@@ -12,7 +12,6 @@ reportRouter.get("/", async (req, res, next) => {
   const { year, month, user_id } = req.query;
   try {
     const isUser = await User.findOne({ id: user_id });
-    const userCosts = await Cost.find({ year, month });
 
     // Check if the user exists
     if (!isUser)
@@ -28,6 +27,7 @@ reportRouter.get("/", async (req, res, next) => {
       return res.status(200).json(cleanedReport);
     } else {
       // If a report does not exist, clean the user costs id and more properties and generate a new report
+      const userCosts = await Cost.find({ year, month });
       const cleanedCosts = cleanUserCosts(userCosts);
       const userReport = reportForUser(cleanedCosts);
 
