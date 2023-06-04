@@ -16,6 +16,12 @@ const cleanUserCosts = (userCosts) => {
   });
   return cleanedCosts;
 };
+//This method is used to filter properties from the Report document
+const cleanUserReport = (userReport) => {
+  const { _id, __v, user_id, ...cleanedReport } = userReport.toObject();
+  return cleanedReport;
+};
+
 //This method create new report and fill each property according to userCosts
 const reportForUser = (userCosts) => {
   const userReport = new report();
@@ -27,4 +33,4 @@ const reportForUser = (userCosts) => {
   return userReport;
 };
 
-module.exports = { reportForUser, cleanUserCosts };
+module.exports = { reportForUser, cleanUserCosts, cleanUserReport };
