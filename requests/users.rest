@@ -24,7 +24,7 @@ Content-Type: application/json
     "month":5,
     "day":12,
     "description":"branch",
-    "category":"sedsaed",
+    "category":"other",
     "sum":12
 }
 ###

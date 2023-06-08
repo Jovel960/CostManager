@@ -22,12 +22,12 @@ reportRouter.get("/", async (req, res, next) => {
     // Check if a report already exists for the specified year, month, and user to prevent another calculation (Approximation)
     const report = await Report.findOne({ year, month, user_id });
     if (report) {
-      // If a report exists, clean the the user_id, day, month, year properties and return it as the response
+      // If a report exists, clean the the user_id, day, month, year properties and return it as the response (Approximation Design Pattern)
       const cleanedReport = cleanUserReport(report);
       return res.status(200).json(cleanedReport);
     } else {
       // If a report does not exist, clean the user costs id and more properties and generate a new report
-      const userCosts = await Cost.find({ year, month });
+      const userCosts = await Cost.find({ year, month, user_id });
       const cleanedCosts = cleanUserCosts(userCosts);
       const userReport = reportForUser(cleanedCosts);
 
@@ -54,3 +54,6 @@ reportRouter.get("/", async (req, res, next) => {
 });
 
 module.exports = reportRouter;
+
+
+
