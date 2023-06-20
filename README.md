@@ -7,6 +7,7 @@ dotenv
 express
 moment
 mongoose
+nodemon
 
 Available Scripts:
 "start": "node index.js": This script is executed when you run the command npm start in your project's directory. It starts the Node.js application by running the index.js file using the node command. Essentially, it launches your application's main entry point.
