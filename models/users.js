@@ -1,3 +1,5 @@
+// Yovel Hadad 207125329 Yarin Rahamim 205833668
+
 // Creating user schema and remove the _id and __v props using set method. then exporting a mongoose model 
 const mongoose = require("mongoose");
 

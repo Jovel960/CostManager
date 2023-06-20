@@ -1,15 +1,17 @@
-//Creating cost schema and remove the _id and __v props using set method. then exporting a mongoose model 
+// Yovel Hadad 207125329 Yarin Rahamim 205833668
+
+//Creating cost schema and remove the _id and __v props using set method. then exporting a mongoose model
 
 const mongoose = require("mongoose");
 
 const costsSchema = new mongoose.Schema({
-  user_id: Number,
-  year: Number,
-  month: Number,
-  day: Number,
-  description: String,
-  category: String,
-  sum: Number,
+  user_id: { type: Number, required: true },
+  year: { type: Number, required: true },
+  month: { type: Number, required: true },
+  day: { type: Number, required: true },
+  description: { type: String, required: true },
+  category: { type: String, required: true },
+  sum: { type: Number, required: true },
 });
 
 costsSchema.set("toJSON", {

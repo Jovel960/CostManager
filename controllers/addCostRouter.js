@@ -1,10 +1,11 @@
+// Yovel Hadad 207125329 Yarin Rahamim 205833668
+
 const addCost = require("express").Router();
 const Cost = require("../models/costs");
 const User = require("../models/users");
-const { assertProps } = require("../utilities/middleware");
 const Report = require("../models/report");
 //This is basic post route for new cost
-addCost.post("/", assertProps, async (req, res, next) => {
+addCost.post("/", async (req, res, next) => {
   try {
     // Extract the required properties from the request body
     const { month, day, year, user_id } = req.body;
@@ -25,7 +26,10 @@ addCost.post("/", assertProps, async (req, res, next) => {
     // Return the created cost object as the response
     return res.status(201).json(cost);
   } catch (e) {
-    res.status(400).json({ error: "Something went wrong..." });
+    if(e._message === "Costs validation failed")
+    res.status(400).json({ error: e._message });
+    else     res.status(400).json({ error: "something went wrong..." });
+
   }
 });
 
