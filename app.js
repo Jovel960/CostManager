@@ -7,6 +7,7 @@ const middleWares = require("./utilities/middleware");
 const usersRouter = require("./controllers/usersRouter");
 const addCostRouter = require("./controllers/addCostRouter");
 const reportRouter = require("./controllers/reportRouter");
+const mainRoute = require("./controllers/mainRoute");
 const app = express();
 const config = require("./utilities/config");
 
@@ -16,6 +17,7 @@ mongoose
   .catch((err) => console.log(err, "error"));
 
 app.use(express.json());
+app.use("/", mainRoute);
 app.use("/addcost", addCostRouter);
 app.use("/about", aboutRouter);
 app.use("/api/users", usersRouter);
