@@ -16,7 +16,7 @@ Available Scripts:
 
 Available Routes:
 /about - returns information about the developers wrapped in array filled with objects.
-/addcost - used to add new cost saved in db. each cost need to include these properties : "user_id","year","month","day","description","category","sum"
+/addcost - used to add new cost saved in db. each cost need to include these properties : "user_id":Number,"year":Number,"month":Number,"day":Number,"description":String,"category":String,"sum":Number
 /report - used to get full report of all the cost according to user id, year and month . the information need to be included in the query string.
 e.g URL/report?year=2023&month=6&user_id=632578
 /api/users - used to handle the users saved in db, use to add delete and get users.
