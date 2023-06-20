@@ -33,3 +33,40 @@ DELETE   http://localhost:3003/addcost
 GET   http://localhost:3003/addcost
 ###
 GET http://localhost:3003/about
+
+
+POST https://yovel-yarin.onrender.com/api/users
+Content-Type: application/json
+
+{
+   "id": 123123,
+   "first_name": "moshe",
+   "last_name": "israeli",
+    "birthday": "January, 10th, 1990"
+}
+###
+
+GET https://yovel-yarin.onrender.com/api/users
+###
+GET https://yovel-yarin.onrender.com/report?year=2023&month=5&user_id=123123
+###
+DELETE  https://yovel-yarin.onrender.com/api/users
+###
+POST https://yovel-yarin.onrender.com/addcost
+Content-Type: application/json
+
+{
+    "user_id":123123,
+    "year": 2023,
+    "month":5,
+    "day":12,
+    "description":"branch",
+    "category":"other",
+    "sum":12
+}
+###
+DELETE   https://yovel-yarin.onrender.com/addcost
+### 
+GET   https://yovel-yarin.onrender.com/addcost
+###
+GET https://yovel-yarin.onrender.com/about
