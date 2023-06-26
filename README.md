@@ -1,5 +1,7 @@
 Cost Manager Backend Project !
 
+Before running this project make sure you created .env file included your PORT and MONGODB URI.
+
 Getting Started with "npm install"
 
 Dependencies added with NPM install:
